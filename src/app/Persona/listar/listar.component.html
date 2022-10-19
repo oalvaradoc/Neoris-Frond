@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Personas</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-hover">
+                <thead>
+                    <th>ID</th>
+                    <th>Nombres</th>
+                    <th>Apellidos</th>
+                    <th>Procesado</th>
+                    <th>Seleccionar</th>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let persona of personas" class="text-center">
+                        <td>{{persona.id}}</td>
+                        <td>{{persona.name}}</td>
+                        <td>{{persona.apellidos}}</td>
+
+                        <ng-template *ngIf="persona.procesado;then showBlock; else notShowBlock">
+                        </ng-template>
+
+                        <ng-template #showBlock>
+                            <td>
+                                <input type="checkbox" id="checked_{{persona.id}}" ng-model="persona.procesado" (click)="Actualizar(persona);" checked>
+                            </td>
+                        </ng-template>
+
+                        <ng-template #notShowBlock>
+                            <td>
+                                <input type="checkbox" id="checked_{{persona.id}}" ng-model="persona.procesado" (click)="Actualizar(persona);">
+                            </td>
+                        </ng-template>
+                        <td>
+                            <input type="button" value="Eliminar" class="btn btn-danger center" id="checked_{{persona.id}}" ng-model="persona.procesado" (click)="Delete(persona);">
+                        </td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+            <!-- <button (click)="Procesado()" class="btn btn-danger hidden">Eliminar</button> -->
+        </div>
+    </div>
+
+</div>
